@@ -46,7 +46,6 @@ articleView.handleAuthorFilter = function() {
       $('article[data-author="' + authorName + '"]').show();
       // $(this.val).fadeIn(3000);
 
-
     } else {
       // TODO: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
       $()
