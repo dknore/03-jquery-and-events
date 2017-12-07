@@ -26,7 +26,7 @@ articleView.populateFilters = function() {
       category = $(this).attr('data-category');
 
       // TODONE: Refactor this concatenation using a template literal.
-      optionTag = `<option value="data-category"> ${category} </option>`;
+      optionTag = `<option value="${category}">${category}</option>`;
 
       if ($('#category-filter option[value="' + category + '"]').length === 0) {
         $('#category-filter').append(optionTag);
@@ -60,7 +60,20 @@ articleView.handleCategoryFilter = function() {
   // When an option with a value is selected, hide all the articles, then reveal the matches.
   // When the blank (default) option is selected, show all the articles, except for the template.
   // Be sure to reset the #author-filter while you are at it!
+  $('#category-filter').on('change', function() {
+    // REVIEW: Inside this function, "this" is the element that triggered the event handler function we are defining. "$(this)" is using jQuery to select that element (analogous to event.target that we have seen before), so we can chain jQuery methods onto it.
+    let category = $(this).val();
+    if (category) {
+      console.log(category);
+      $('article').hide();
+      $('article[data-category="' + category + '"]').fadeIn(1000);
 
+    } else {
+      $('article').fadeIn(1000);
+      $('.template').hide();
+    }
+    $('#author-filter').val('');
+  });
 };
 
 articleView.handleMainNav = function() {
