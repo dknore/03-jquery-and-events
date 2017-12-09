@@ -12,6 +12,11 @@
   clear: both;
 }
 
+article {
+  float: auto;
+  /* display: flex; */
+}
+
 .heading-group-h1 {
   max-width: 80%;
 }
